@@ -17,14 +17,6 @@ const (
 	voiceName    = "en-US-Wavenet-F"
 )
 
-var cli struct {
-	Debug bool `help:"Enable debug mode."`
-
-	InputFile string `help:"Text file to read from. Use - for standard input." arg:""`
-
-	OutputFile string `help:"Audio file to write to. Use - for standard output." arg:""`
-}
-
 func runTTS(text string) ([]byte, error) {
 	// Instantiates a client.
 	ctx := context.Background()
@@ -85,6 +77,14 @@ func writeOutput(filename string, data []byte) error {
 		return err
 	}
 	return ioutil.WriteFile(filename, data, 0644)
+}
+
+var cli struct {
+	Debug bool `help:"Enable debug mode."`
+
+	InputFile string `help:"Text file to read from. Use - for standard input." arg:""`
+
+	OutputFile string `help:"Audio file to write to. Use - for standard output." arg:""`
 }
 
 func main() {
