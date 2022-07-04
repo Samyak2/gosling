@@ -12,12 +12,7 @@ import (
 	"github.com/alecthomas/kong"
 )
 
-const (
-	languageCode = "en-US"
-	voiceName    = "en-US-Wavenet-F"
-)
-
-func runTTS(text string) ([]byte, error) {
+func runTTS(text string, languageCode string, voiceName string) ([]byte, error) {
 	// Instantiates a client.
 	ctx := context.Background()
 
@@ -79,13 +74,26 @@ func writeOutput(filename string, data []byte) error {
 	return ioutil.WriteFile(filename, data, 0644)
 }
 
-var cli struct {
-	Debug bool `help:"Enable debug mode."`
-
+type Cli struct {
 	InputFile string `help:"Text file to read from. Use - for standard input." arg:""`
 
 	OutputFile string `help:"Audio file to write to. Use - for standard output." arg:""`
+
+	LanguageCode string `help:"Language code to use for the synthesis. See full list at: https://cloud.google.com/text-to-speech/docs/voices" default:"en-US"`
+
+	VoiceName string `help:"Voice name to use for the synthesis. Use an empty string to let the GCP API choose. See full list at: https://cloud.google.com/text-to-speech/docs/voices" default:"en-US-Wavenet-F"`
 }
+
+func (c *Cli) AfterApply() error {
+	// the VoiceName overrides LanguageCode if given to the GCP API.
+	// So if a different LanguageCode is used, we reset the VoiceName.
+	if c.LanguageCode != "en-US" && c.VoiceName == "en-US-Wavenet-F" {
+		c.VoiceName = ""
+	}
+	return nil
+}
+
+var cli Cli
 
 func main() {
 	kctx := kong.Parse(&cli)
@@ -93,7 +101,7 @@ func main() {
 	input, err := readFile(cli.InputFile)
 	kctx.FatalIfErrorf(err)
 
-	audio, err := runTTS(input)
+	audio, err := runTTS(input, cli.LanguageCode, cli.VoiceName)
 	kctx.FatalIfErrorf(err)
 
 	err = writeOutput(cli.OutputFile, audio)
