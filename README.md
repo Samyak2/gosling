@@ -26,12 +26,10 @@ You will need:
 
 ### Pre-built binaries
 
-Go to the [latest release](https://github.com/Samyak2/gosling/releases/latest), scroll down to "Assets" and download the correct file for your platform. Run the downloaded binary:
+Go to the [latest release](https://github.com/Samyak2/gosling/releases/latest), scroll down to "Assets" and download the correct file for your platform. Unzip the file and run the `gosling` binary inside:
 ```bash
 ./gosling
 ```
-
-You may need to `chmod +x gosling` before running.
 
 ### If you have `go` installed
 
