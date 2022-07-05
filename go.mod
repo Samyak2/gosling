@@ -1,4 +1,4 @@
-module github.com/Samyak2/tts
+module github.com/Samyak2/gosling
 
 go 1.17
 
