@@ -13,7 +13,7 @@ This is *NOT* intended to be a completely-free, pick-up-and-use TTS solution. In
 
 You will need:
 - A GCP account with billing enabled.
-    - Google gives you 1 million characters free every month. That's nearly 10 books a month. See [pricing](https://cloud.google.com/text-to-speech/pricing).
+    - Google gives you [1 million characters free](https://cloud.google.com/text-to-speech/pricing) every month. That's nearly 10 books a month. It's essentially free for personal use.
     - Once you have a GCP account, [enable the TTS API and get a service account](https://cloud.google.com/text-to-speech/docs/before-you-begin).
     - Export service account credentials in your shell. You will need to do this every time you open a new shell. Add it to your shell configuration or make a script to run `gosling` for convenience.
       ```bash
