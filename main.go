@@ -91,9 +91,9 @@ type Cli struct {
 
 	LanguageCode string `short:"l" help:"Language code to use for the synthesis. See full list at: https://cloud.google.com/text-to-speech/docs/voices" default:"en-US"`
 
-	VoiceName string `short:"v" help:"Voice name to use for the synthesis. Use an empty string to let the GCP API choose. See full list at: https://cloud.google.com/text-to-speech/docs/voices" default:"en-US-Wavenet-A"`
+	VoiceName string `short:"v" help:"Voice name to use for the synthesis. Use an empty string to let the GCP API choose. See full list at: https://cloud.google.com/text-to-speech/docs/voices" default:"en-US-Wavenet-J"`
 
-	Pitch float64 `help:"Pitch adjustment in the range [-20.0, 20.0]. Use a negative number to decrease the pitch. See: https://cloud.google.com/text-to-speech/docs/reference/rest/v1/text/synthesize#audioconfig" default:"-3"`
+	Pitch float64 `help:"Pitch adjustment in the range [-20.0, 20.0]. Use a negative number to decrease the pitch. See: https://cloud.google.com/text-to-speech/docs/reference/rest/v1/text/synthesize#audioconfig" default:"-2"`
 
 	SpeakingRate float64 `short:"r" help:"Speaking rate/speed in the range [0.25, 4.0]. See: https://cloud.google.com/text-to-speech/docs/reference/rest/v1/text/synthesize#audioconfig" default:"1.0"`
 
@@ -107,7 +107,7 @@ type Cli struct {
 func (c *Cli) AfterApply() error {
 	// the VoiceName overrides LanguageCode if given to the GCP API.
 	// So if a different LanguageCode is used, we reset the VoiceName.
-	if c.LanguageCode != "en-US" && c.VoiceName == "en-US-Wavenet-A" {
+	if c.LanguageCode != "en-US" && c.VoiceName == "en-US-Wavenet-J" {
 		c.VoiceName = ""
 	}
 	return nil
