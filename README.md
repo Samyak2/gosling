@@ -22,6 +22,29 @@ You will need:
 - Internet connection every time you need some text spoken to you.
 - I have only tested this on Linux. Commands for playing audio will be different on other platforms.
 
+## Examples
+
+### Simple text with default options
+
+https://user-images.githubusercontent.com/34161949/178104531-73298a8e-753f-4910-94c6-7cea9a85337a.mp4
+
+### Numbers and punctuation with default options
+
+(the multiple exclamations are something that I have seen other TTSs struggle with):
+```
+Welcome to gosling!!! It has options such as "Pitch adjustment" in the range -20.0 to 20.0, "Speaking rate/speed" in the range 0.25 to 4.0 and "Volume gain" (in dB) in the range -96.0 to 16.0.
+```
+
+https://user-images.githubusercontent.com/34161949/178104603-f8c46b93-4d38-4f71-bdc0-d3d4b3e47b05.mp4
+
+### Other languages
+
+Kannada:
+
+https://user-images.githubusercontent.com/34161949/178105235-19e921c7-355b-4e66-8c3e-e962718002aa.mp4
+
+Check out the [full voice list](https://cloud.google.com/text-to-speech/docs/voices), use `Wavenet` or `Neural2` based voices for better quality.
+
 ## Installation
 
 ### Pre-built binaries
