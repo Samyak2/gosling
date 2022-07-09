@@ -2,6 +2,8 @@
 tts
 gosling
 
+inputs/
+outputs/
 input*.txt
-input.ssml
+input*.ssml
 output*.mp3
